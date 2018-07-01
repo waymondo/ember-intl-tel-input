@@ -345,6 +345,7 @@ export default TextField.extend({
 
     // let Ember be aware of the changes
     this.$().change(notifyPropertyChange);
+    this.$().on('countrychange', notifyPropertyChange);
 
     this.$().intlTelInput({
       allowDropdown: this.get('allowDropdown'),
@@ -372,6 +373,7 @@ export default TextField.extend({
    * @method willDestroyElement
    */
   willDestroyElement() {
+    this.$().off('countrychange');
     this.$().intlTelInput('destroy');
   },
 });
